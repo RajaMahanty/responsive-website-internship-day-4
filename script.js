@@ -193,6 +193,21 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 // Form validation
 const contactForm = document.getElementById("contact-form");
 
+function showNotification(message, type) {
+    const backgroundColor = type === "success" ? "#28a745" : "#dc3545";
+
+    Toastify({
+        text: message,
+        duration: 3000,
+        gravity: "top",
+        position: "right",
+        backgroundColor: backgroundColor,
+        stopOnFocus: true,
+        className: "custom-toast",
+        onClick: function () {}, // Callback after click
+    }).showToast();
+}
+
 contactForm?.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -210,33 +225,26 @@ contactForm?.addEventListener("submit", function (e) {
         return;
     }
 
-    // Here you would typically send the form data to a server
-    showNotification(
-        "Thank you for your message! I will get back to you soon.",
-        "success"
-    );
-    contactForm.reset();
+    // Simulate sending message with loading state
+    const submitBtn = this.querySelector(".btn-submit");
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    submitBtn.disabled = true;
+
+    // Simulate API call
+    setTimeout(() => {
+        showNotification(
+            "Thank you for your message! I will get back to you soon.",
+            "success"
+        );
+        contactForm.reset();
+        // Reset button state
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    }, 1500);
 });
 
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
-}
-
-// Notification system
-function showNotification(message, type) {
-    const notification = document.createElement("div");
-    notification.className = `notification ${type}`;
-    notification.textContent = message;
-
-    document.body.appendChild(notification);
-
-    // Trigger animation
-    setTimeout(() => notification.classList.add("show"), 10);
-
-    // Remove notification after 3 seconds
-    setTimeout(() => {
-        notification.classList.remove("show");
-        setTimeout(() => notification.remove(), 300);
-    }, 3000);
 }
