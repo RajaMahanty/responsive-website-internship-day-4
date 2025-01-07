@@ -94,6 +94,9 @@ section {
 
 .project-card img {
     width: 100%;
+    max-width: 400px;
+    height: 250px;
+    object-fit: cover;
     border-radius: 4px;
     margin-bottom: 1rem;
 }
