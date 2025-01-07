@@ -37,12 +37,42 @@ const carouselContainer = document.querySelector(".carousel-container");
 const slides = document.querySelectorAll(".carousel-slide");
 const prevButton = document.querySelector(".carousel-prev");
 const nextButton = document.querySelector(".carousel-next");
+const dotsContainer = document.querySelector(".carousel-dots");
 
 let currentSlide = 0;
 const totalSlides = slides.length;
 
-function updateCarousel() {
+// Create dots
+function createDots() {
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement("div");
+        dot.classList.add("dot");
+        if (i === 0) dot.classList.add("active");
+        dot.addEventListener("click", () => {
+            goToSlide(i);
+            resetCarouselTimer();
+        });
+        dotsContainer.appendChild(dot);
+    }
+}
+
+// Update dots
+function updateDots() {
+    const dots = document.querySelectorAll(".dot");
+    dots.forEach((dot, index) => {
+        dot.classList.toggle("active", index === currentSlide);
+    });
+}
+
+// Update carousel
+function updateCarousel(smooth = true) {
+    if (smooth) {
+        carouselContainer.style.transition = "transform 0.5s ease-in-out";
+    } else {
+        carouselContainer.style.transition = "none";
+    }
     carouselContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+    updateDots();
 }
 
 function nextSlide() {
@@ -55,11 +85,56 @@ function prevSlide() {
     updateCarousel();
 }
 
-prevButton?.addEventListener("click", prevSlide);
-nextButton?.addEventListener("click", nextSlide);
+function goToSlide(index) {
+    currentSlide = index;
+    updateCarousel();
+}
 
-// Auto-advance carousel every 5 seconds
+// Touch events for mobile swipe
+let touchStartX = 0;
+let touchEndX = 0;
+
+carouselContainer?.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+carouselContainer?.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+});
+
+function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+
+    if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+            nextSlide();
+        } else {
+            prevSlide();
+        }
+        resetCarouselTimer();
+    }
+}
+
+// Event listeners
+prevButton?.addEventListener("click", () => {
+    prevSlide();
+    resetCarouselTimer();
+});
+
+nextButton?.addEventListener("click", () => {
+    nextSlide();
+    resetCarouselTimer();
+});
+
+// Auto-advance carousel
 let carouselInterval = setInterval(nextSlide, 5000);
+
+function resetCarouselTimer() {
+    clearInterval(carouselInterval);
+    carouselInterval = setInterval(nextSlide, 5000);
+}
 
 // Pause carousel on hover
 carouselContainer?.addEventListener("mouseenter", () => {
@@ -69,6 +144,10 @@ carouselContainer?.addEventListener("mouseenter", () => {
 carouselContainer?.addEventListener("mouseleave", () => {
     carouselInterval = setInterval(nextSlide, 5000);
 });
+
+// Initialize carousel
+createDots();
+updateCarousel(false);
 
 // Scroll to top functionality
 const scrollToTopButton = document.getElementById("scroll-to-top");
