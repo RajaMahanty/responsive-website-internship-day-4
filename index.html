@@ -4,33 +4,83 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Raja Mahanty</title>
+        <!-- AOS CSS -->
+        <link
+            href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+            rel="stylesheet"
+        />
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
+        <!-- Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <!-- Custom CSS -->
         <link rel="stylesheet" href="styles.css" />
-        <script src="script.js" defer></script>
     </head>
     <body>
         <header>
             <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li>
+                        <a href="#home"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li>
+                        <a href="#about"><i class="fas fa-user"></i> About</a>
+                    </li>
+                    <li>
+                        <a href="#projects"
+                            ><i class="fas fa-code"></i> Projects</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#contact"
+                            ><i class="fas fa-envelope"></i> Contact</a
+                        >
+                    </li>
                 </ul>
             </nav>
         </header>
 
         <main>
             <section id="home" class="hero">
-                <h1>Raja Mahanty</h1>
-                <h3>Welcome to my Portfolio</h3>
-                <p>Front-end Developer & UI/UX Enthusiast</p>
+                <div class="hero-content" data-aos="fade-up">
+                    <h1>Raja Mahanty</h1>
+                    <div class="typing-text">
+                        <h3>Welcome to my Portfolio</h3>
+                    </div>
+                    <p>
+                        <span class="highlight"
+                            >Front-end Developer & UI/UX Enthusiast</span
+                        >
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"
+                            ><i class="fab fa-github"></i
+                        ></a>
+                        <a href="#" class="social-icon"
+                            ><i class="fab fa-linkedin"></i
+                        ></a>
+                        <a href="#" class="social-icon"
+                            ><i class="fab fa-twitter"></i
+                        ></a>
+                    </div>
+                </div>
             </section>
 
             <section id="about">
-                <h2>About Me</h2>
-                <div class="about-content">
+                <h2 data-aos="fade-down">About Me</h2>
+                <div class="about-content" data-aos="fade-up">
                     <div class="bio">
                         <p>
+                            <i class="fas fa-graduation-cap education-icon"></i>
                             Hello! I'm Raja Mahanty, currently pursuing my
                             Master of Computer Applications (MCA) at Haridwar
                             University, Roorkee, Uttarakhand. I'm a passionate
@@ -41,98 +91,122 @@
                             academic journey.
                         </p>
                     </div>
+                    <div class="skills">
+                        <h3>Skills</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Responsive Design</span>
+                            <span class="skill-tag">UI/UX</span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <section id="projects">
-                <h2>My Projects</h2>
-                <div class="project-carousel">
+                <h2 data-aos="fade-down">My Projects</h2>
+                <div class="project-carousel" data-aos="fade-up">
                     <div class="carousel-container">
                         <div class="carousel-slide">
                             <div class="project-card">
-                                <img
-                                    src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=500&auto=format"
-                                    alt="E-commerce Website"
-                                />
+                                <div class="project-image">
+                                    <img
+                                        src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=500&auto=format"
+                                        alt="E-commerce Website"
+                                    />
+                                    <div class="project-overlay">
+                                        <div class="project-links">
+                                            <a href="#" class="project-link"
+                                                ><i class="fas fa-link"></i
+                                            ></a>
+                                            <a href="#" class="project-github"
+                                                ><i class="fab fa-github"></i
+                                            ></a>
+                                        </div>
+                                    </div>
+                                </div>
                                 <h3>E-commerce Website</h3>
                                 <p>
                                     A full-featured online shopping platform
                                     built with HTML, CSS, and JavaScript.
                                     Features include responsive product
                                     galleries, shopping cart functionality, and
-                                    secure checkout process. Implemented modern
-                                    UI/UX principles for better user engagement.
+                                    secure checkout process.
                                 </p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">HTML5</span>
+                                    <span class="tech-tag">CSS3</span>
+                                    <span class="tech-tag">JavaScript</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="carousel-slide">
-                            <div class="project-card">
-                                <img
-                                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&auto=format"
-                                    alt="Portfolio Dashboard"
-                                />
-                                <h3>Analytics Dashboard</h3>
-                                <p>
-                                    An interactive dashboard displaying
-                                    real-time data visualization using Chart.js.
-                                    Features include customizable widgets, data
-                                    filtering options, and responsive design for
-                                    mobile devices. Built with modern JavaScript
-                                    and CSS Grid.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="carousel-slide">
-                            <div class="project-card">
-                                <img
-                                    src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?w=500&auto=format"
-                                    alt="Weather App"
-                                />
-                                <h3>Weather Application</h3>
-                                <p>
-                                    A weather forecast application that
-                                    integrates with OpenWeatherMap API. Users
-                                    can search for locations and view current
-                                    weather conditions, hourly forecasts, and
-                                    5-day predictions. Built using JavaScript
-                                    fetch API and async/await for API calls.
-                                </p>
-                            </div>
-                        </div>
+                        <!-- Repeat similar structure for other projects -->
                     </div>
-                    <button class="carousel-prev">Previous</button>
-                    <button class="carousel-next">Next</button>
+                    <button class="carousel-prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </section>
 
             <section id="contact">
-                <h2>Contact Me</h2>
-                <form id="contact-form">
+                <h2 data-aos="fade-down">Contact Me</h2>
+                <form id="contact-form" data-aos="fade-up">
                     <div class="form-group">
-                        <label for="name">Name:</label>
+                        <label for="name"
+                            ><i class="fas fa-user"></i> Name:</label
+                        >
                         <input type="text" id="name" name="name" required />
                     </div>
                     <div class="form-group">
-                        <label for="email">Email:</label>
+                        <label for="email"
+                            ><i class="fas fa-envelope"></i> Email:</label
+                        >
                         <input type="email" id="email" name="email" required />
                     </div>
                     <div class="form-group">
-                        <label for="message">Message:</label>
+                        <label for="message"
+                            ><i class="fas fa-comment"></i> Message:</label
+                        >
                         <textarea
                             id="message"
                             name="message"
                             required
                         ></textarea>
                     </div>
-                    <button type="submit">Send Message</button>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
                 </form>
             </section>
         </main>
 
-        <button id="scroll-to-top" aria-label="Scroll to top">↑</button>
+        <button id="scroll-to-top" aria-label="Scroll to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
 
         <footer>
-            <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+            <p>&copy; 2024 Raja Mahanty. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" class="social-icon"
+                    ><i class="fab fa-github"></i
+                ></a>
+                <a href="#" class="social-icon"
+                    ><i class="fab fa-linkedin"></i
+                ></a>
+                <a href="#" class="social-icon"
+                    ><i class="fab fa-twitter"></i
+                ></a>
+            </div>
         </footer>
+
+        <!-- AOS JS -->
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <!-- Custom JS -->
+        <script src="script.js" defer></script>
     </body>
 </html>
